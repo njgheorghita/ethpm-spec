@@ -1,12 +1,12 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.24;
 
-import {owned} from "owned/contracts/owned.sol";
+import {Owned} from "owned/contracts/owned.sol";
 
-contract transferable is owned {
+contract Transferable is Owned {
     event OwnerChanged(address indexed prevOwner, address indexed newOwner);
 
-    function transferOwner(address newOwner) public onlyowner returns (bool) {
-        OwnerChanged(owner, newOwner);
+    function transferOwner(address newOwner) public onlyOwner returns (bool) {
+        emit OwnerChanged(owner, newOwner);
         owner = newOwner;
         return true;
     }
